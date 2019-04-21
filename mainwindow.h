@@ -27,10 +27,10 @@ class MainWindow : public QMainWindow
     Decode_reg decode_reg;
     Execute_reg execute_reg;
     Memory_reg memory_reg;
-    Fetch_reg_new fetch_tmp;
-    Decode_reg decode_tmp;
-    Execute_reg execute_tmp;
-    Memory_reg memory_tmp;
+    //Fetch_reg_new fetch_tmp;
+    //Decode_reg decode_tmp;
+    //Execute_reg execute_tmp;
+    //Memory_reg memory_tmp;
     HU HazardUnit;
     Insn_data_memory instr_data_mem;
     Regfile regfile;

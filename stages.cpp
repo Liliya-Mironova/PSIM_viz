@@ -136,32 +136,32 @@ Memory_reg memory_stage(Execute_reg &reg, Insn_data_memory &mem, int32_t &BP_EX,
     uint8_t mux_mem = CU.mux_mem;
     uint8_t MEM_WE = CU.MEM_WE;
     uint8_t WB_WE = CU.WB_WE;
-    std::cout << "after signals detecting" << std::endl;
+    //std::cout << "after signals detecting" << std::endl;
 
     int32_t rs2_val = reg.get_rs2_val(); // get data
     int32_t get_alu_result = reg.get_ALUresult();
 
     uint32_t rd;
-    std::cout << "before get_register" << std::endl;
+    //std::cout << "before get_register" << std::endl;
     if (!MEM_WE && get_alu_result >= 0)
         rd = mem.get_register(get_alu_result); // read from memory anyway
-    std::cout << "ad" << std::endl;
+    //std::cout << "ad" << std::endl;
     std::cout<<rs2_val<<std::endl<<get_alu_result<<std::endl;
     if (MEM_WE & (!branch) )
     {
         assert(get_alu_result >= 0);
         mem.set_register(rs2_val, get_alu_result); // write to memory only on signal
     }
-    std::cout << "before mux_mem" << std::endl;
+    //std::cout << "before mux_mem" << std::endl;
     int32_t result_d;
     if (!mux_mem) // multiplexor
         result_d = rd;
     else
         result_d = get_alu_result;
-    std::cout << "after mux_mem" << std::endl;
+    //std::cout << "after mux_mem" << std::endl;
 
     BP_EX = reg.get_ALUresult(); // set signal
-    std::cout << "ALU" << std::endl;
+    //std::cout << "ALU" << std::endl;
     if (WB_WE)
     {
         HazardUnit.SetRdMem(reg.get_rd());
@@ -170,7 +170,7 @@ Memory_reg memory_stage(Execute_reg &reg, Insn_data_memory &mem, int32_t &BP_EX,
     {
         HazardUnit.SetRdMem(0);
     }
-    std::cout << "just return" << std::endl;
+    //std::cout << "just return" << std::endl;
     Memory_reg return_reg(CU, result_d, reg.get_rd());
     return return_reg;
 }

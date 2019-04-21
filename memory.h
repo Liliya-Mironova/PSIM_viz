@@ -100,7 +100,7 @@ class Execute_reg {
     bool flush = false;
 
 public:
-    Execute_reg() : rs2_val(0), ALUresult(0), rd(0) {}
+    Execute_reg() : rs2_val(0), ALUresult(0), rd(0) {std::cout << "EXECUTE_REG CONSTRUCTOR" ;}
     Execute_reg(CU_signals CU_, int32_t rs2_val, int32_t ALUresult_, uint8_t rd_, bool flush_);
 
     CU_signals get_CU_reg() { return CU_reg; }
@@ -118,7 +118,7 @@ class Memory_reg {
     uint8_t rd;
 
 public:
-    Memory_reg() : mux_result(0), rd(0) {}
+    Memory_reg() : mux_result(0), rd(0) {std::cout << "MEMORY_REG CONSTRUCTOR" ;}
     Memory_reg(CU_signals CU_reg, uint32_t mux_result, uint8_t rd);
 
     CU_signals get_CU_reg() { return CU_reg; }
